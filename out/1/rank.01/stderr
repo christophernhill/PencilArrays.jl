@@ -1,0 +1,2 @@
+┌ Warning: Performing scalar operations on GPU arrays: This is very slow, consider disallowing these operations with `allowscalar(false)`
+└ @ GPUArrays ~/projects/parray/.julia/packages/GPUArrays/WV76E/src/host/indexing.jl:43
