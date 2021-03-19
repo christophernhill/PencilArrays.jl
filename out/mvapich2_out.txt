@@ -1,0 +1,17 @@
+Ax:  (42, 10, 7)
+Ax:  (42, 31, 29)
+AxC: (42, 10, 7)
+AxC: (42, 31, 29)
+Ay:  (14, 31, 7)
+Ay:  (42, 31, 29)
+AyC: (14, 31, 7)
+AyC: (42, 31, 29)
+maxAx: 0.0
+maxAy: 0.0
+typeof(Ay): PencilArray{Float64,3,Array{Float64,3},3,0,Pencil{3,2,Permutation{(2, 1, 3),3}}}
+typeof(AyC): PencilArray{Float64,3,CuArray{Float64,3},3,0,Pencil{3,2,Permutation{(2, 1, 3),3}}}
+typeof(AyC): PencilArray{Float64,3,CuArray{Float64,3},3,0,Pencil{3,2,Permutation{(2, 1, 3),3}}}
+typeof(AyCG): Array{Float64,3}
+size(AyC): (14, 31, 7)
+size(AyCG): (42, 31, 29)
+maximum(AyCG): 34.55751918948772

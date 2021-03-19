@@ -78,7 +78,15 @@ if rank == 0
  println("typeof(Ay): ",typeof(Ay))
  println("typeof(AyC): ",typeof(AyC))
 end
-# AyCG=gather(AyC)
+AyCG=gather(AyC)
+
+if rank == 0
+ println("typeof(AyC): ",typeof(AyC))
+ println("typeof(AyCG): ",typeof(AyCG))
+ println("size(AyC): ",size(AyC))
+ println("size(AyCG): ",size(AyCG))
+ println("maximum(AyCG): ",maximum(AyCG))
+end
 
 ## if rank == 0
 ##  println( maximum(@. abs(AyG - AyCG) ) )
