@@ -35,15 +35,25 @@ end
 # Create another pencil configuration, decomposing along dimensions (1, 3).
 # We could use the same constructor as before, but it's recommended to reuse the
 # previous Pencil instead.
-pen_y = Pencil(pen_x, decomp_dims=(1, 3))
+pen_y = Pencil(pen_x, decomp_dims=(1, 3), permute = Permutation(2, 1, 3))
+# pen_y = Pencil(pen_x, decomp_dims=(1, 3) )
 
 # Now transpose from the x-pencil to the y-pencil configuration, redistributing
 # the data initially in Ax.
 Ay = PencilArray{Float64}(undef, pen_y)
-s_local = size_local(pen_y)
+s_local = size_local(pen_y, MemoryOrder() )
 AyC = PencilArray(pen_y, CuArray{Float64}(undef, s_local ))
 
 MPI.Barrier(comm)
+
+if rank == 0
+ println( "Ay:  ", size(Ay)          )    # size of local part
+ println( "Ay:  ", size_global(Ay)   )    # total size of the array = (42, 31, 29)
+ println( "AyC: ", size(AyC)         )    # size of local part
+ println( "AyC: ", size_global(AyC)  )    # total size of the array = (42, 31, 29)
+end
+
+# Create another pencil configuration, decomposing along dimensions (1, 3).
 
 transpose!(Ay, Ax)
 transpose!(AyC, AxC)
@@ -60,4 +70,17 @@ if rank == 0
  println("maxAx: ", maxAx)
  println("maxAy: ", maxAy)
 end
+
+# Test gather on transposed arrays
+AyG=gather(Ay)
+Ay.=AyC
+if rank == 0
+ println("typeof(Ay): ",typeof(Ay))
+ println("typeof(AyC): ",typeof(AyC))
+end
+# AyCG=gather(AyC)
+
+## if rank == 0
+##  println( maximum(@. abs(AyG - AyCG) ) )
+## end
 

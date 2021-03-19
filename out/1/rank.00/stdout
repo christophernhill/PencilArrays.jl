@@ -1,6 +1,13 @@
+[1616115091.187140] [tartarus:37501:0]         parser.c:1503 UCX  WARN  unused env variable: UCX_ERROR_SIGNALS (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
 Ax:  (42, 10, 7)
 Ax:  (42, 31, 29)
 AxC: (42, 10, 7)
 AxC: (42, 31, 29)
+Ay:  (14, 31, 7)
+Ay:  (42, 31, 29)
+AyC: (14, 31, 7)
+AyC: (42, 31, 29)
 maxAx: 0.0
-maxAy: NaN
+maxAy: 0.0
+typeof(Ay): PencilArray{Float64,3,Array{Float64,3},3,0,Pencil{3,2,Permutation{(2, 1, 3),3}}}
+typeof(AyC): PencilArray{Float64,3,CuArray{Float64,3},3,0,Pencil{3,2,Permutation{(2, 1, 3),3}}}
